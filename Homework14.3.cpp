@@ -52,7 +52,7 @@ void swapscopedlock(Data& d1, Data& d2) {
 void swapuniquelock(Data& d1, Data& d2) {
     std::unique_lock<std::mutex> lm1(d1.m, std::defer_lock);
     std::unique_lock<std::mutex> lm2(d2.m, std::defer_lock);
-    std::lock(d1.m, d2.m);
+    std::lock(lm1, lm2);
     int da = d1.data1;
     int db = d1.data2;
     int dc = d1.data3;
